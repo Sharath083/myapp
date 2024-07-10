@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        .body {
+            background-size: cover;
+            background-size: 100% 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .reg_container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        fieldset {
+            border: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        label {
+            width: 30%;
+            font-size: large;
+            color: rgb(242, 13, 13);
+        }
+        input, select, .gender-options {
+            width: 60%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .gender-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            align-self: center;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="reg_container">
+        <form>
+            <legend style="color: rgb(240, 140, 9);">User Registration:</legend>
+            
+            <div class="form-group">
+                <label for="name">First Name: </label>
+                <input type="text" id="name" maxlength="10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password: </label>
+                <input type="password" id="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age: </label>
+                <input type="number" id="age" min="18" max="60" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile: </label>
+                <input type="text" id="mobile" pattern="\d{10}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender: </label>
+                <div class="gender-options">
+                    <input type="radio" id="male" name="gender" value="MALE" required>
+                    <label style="color: blue;" for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="FEMALE" required>
+                    <label style="color: brown;" for="female">Female</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button style="margin-bottom: 3cm;" id="submit" type="button" onclick="submitForm()">Submit</button>
+            </div>
+            <p id="demo"></p>
+            <p id="response"></p>
+            <script src="../js/form.js">
+                document.getElementById("demo").innerHTML =
+                "The page protocol is: " + window.location.protocol;
+            </script>
+        </form>
+    </div>
+</body>
+</html>
