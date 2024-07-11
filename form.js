@@ -16,7 +16,7 @@ async function submitForm() {
     };
 
     try {
-        const response = await fetch('http://localhost:8080/user/signup', {
+        const response = await fetch('https://orders-render.onrender.com/user/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,16 +27,18 @@ async function submitForm() {
         });
 
         if (response.ok) {
-            document.getElementById("response").innerHTML = 'Registered successfully!';
-            alert('User registered successfully!');
+            document.getElementById("response").innerHTML = 'Registered successfully!, welcome '+name;
+            alert('registered successfully!, welcome '+name);
         } else {
             const errorData = await response.json();
             console.error('Error data:', errorData);
-            alert('Failed to register user: ' + errorData.message);
+            document.getElementById("response").innerHTML = 'Unable to register.Try again';
+
+            // alert('Failed to register user: ' + errorData.message);
         }
     } catch (error) {
         console.error('Error:', error);
         document.getElementById("response").innerHTML = 'An error occurred while registering the user.';
-        alert('An error occurred while registering the user. ' + error.message);
+        // alert('An error occurred while registering the user. ' + error.message);
     }
 }
