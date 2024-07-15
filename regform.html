@@ -30,23 +30,30 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
         }
         label {
             width: 30%;
             font-size: large;
             color: rgb(242, 13, 13);
         }
-        input, select, .gender-options {
+        input, select, .gender-options, .otp-container {
             width: 60%;
             padding: 5px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-        }
-        .gender-options {
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+        .gender-options {
+            gap: 10px;
+        }
+        .otp-container {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
         }
         button {
             padding: 10px;
@@ -54,7 +61,7 @@
             color: white;
             border: none;
             cursor: pointer;
-            align-self: center;
+            align-self: flex-end;
         }
         button:hover {
             background-color: #0056b3;
@@ -63,7 +70,7 @@
 </head>
 <body class="body">
     <div class="reg_container">
-        <form>
+        <form id="registrationForm">
             <legend style="color: rgb(240, 140, 9);">User Registration:</legend>
             
             <div class="form-group">
@@ -78,7 +85,18 @@
 
             <div class="form-group">
                 <label for="email">Email: </label>
-                <input type="email" id="email" required>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <input type="email" id="email" required>
+                    <button type="button" onclick="sendOTP()">Verify</button>
+                </div>
+            </div>
+
+            <div class="form-group otp-container" id="otpContainer">
+                <label for="otp">Enter OTP: </label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <input type="text" id="otp" maxlength="6" required>
+                    <button type="button" onclick="verifyOTP()">Verify OTP</button>
+                </div>
             </div>
 
             <div class="form-group">
@@ -102,7 +120,7 @@
             </div>
 
             <div class="form-group">
-                <button style="margin-bottom: 3cm;" id="submit" type="button" onclick="submitForm()">Submit</button>
+                <button style="margin-bottom: 3cm;" id="submit" type="button" onclick="submitForm()" disabled>Submit</button>
             </div>
             <p id="demo"></p>
             <p id="response"></p>
